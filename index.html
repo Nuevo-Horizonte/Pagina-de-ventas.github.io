@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuevo Horizonte - Servicios</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f4f8fc;
+        }
+        
+        header {
+    background-color: #ffffff;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    height: 90px;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.logo-container img {
+    height: 80px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.logo-container:hover {
+    transform: scale(1.1) translateX(5px);
+}
+
+.logo-container img:hover {
+    animation: expand 0.6s ease-in-out;
+}
+
+.second-logo {
+    height: 100px; 
+}
+        
+.nav-container {
+    display: flex;
+    align-items: center;
+    gap: 20px; 
+}
+
+@media (max-width: 600px) {
+    .logo-container img {
+        height: 60px; 
+    }
+    .second-logo {
+        height: 80px;
+    }
+}
+
+
+nav {
+    display: flex;
+    align-items: center;
+    gap: 15px; 
+}
+
+nav a {
+            margin: 0 15px;
+            color: #333;
+            font-weight: 500;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        nav a:hover {
+            color: #1b5e20;
+        }
+
+        nav a i {
+    margin-right: 5px;
+}
+
+@media (max-width: 600px) {
+    .title-container h1 {
+        font-size: 1.5em; /* Reduce el tamaño del texto */
+        text-align: center; /* Asegura que se mantenga centrado */
+        line-height: 1.2; /* Ajusta el espaciado entre líneas */
+        padding: 0 10px; /* Evita que se vea pegado a los bordes */
+    }
+}
+
+
+.whatsapp-container {
+    display: flex;
+    align-items: center;
+}
+
+.whatsapp-icon {
+    width: 60px; 
+    height: auto;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+.whatsapp-icon:hover {
+    transform: scale(1.2); 
+    opacity: 0.8;
+}
+
+.whatsapp-floating {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+    transition: bottom 0.3s ease-in-out;
+}
+
+@media (max-width: 600px) {
+    .whatsapp-floating {
+        bottom: 10px; 
+        right: 10px;
+    }
+    .whatsapp-icon {
+        width: 50px; 
+    }
+}
+
+
+        .services-container {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .title-container {
+            text-align: center;
+            margin-bottom: 40px;
+            color: #1b5e20;
+            font-size: 2em;
+            font-weight: bold;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background-color: #fafef5;
+            border: 1px solid #4db152;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .service-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px 8px 0 0;
+        }
+        
+        .service-card h3 {
+            margin: 15px 0;
+            color: #1b5e20;
+        }
+        
+        .service-card p {
+            color: #292525;
+        }
+        
+
+        .button-container {
+            margin-top: auto;
+            text-align: center;
+            width: 100%;
+        }
+        
+        .service-card button {
+            width: 100%;
+            padding: 10px 15px;
+            background-color: #2e7d32;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        @media (max-width: 600px) {
+    .services-grid {
+        grid-template-columns: 1fr; 
+    }
+}
+
+        
+        @media (max-width: 600px) {
+    .services-container {
+        padding: 40px 10px;
+    }
+}
+
+        
+        .service-card button:hover {
+            background-color: #1b5e20;
+        }
+        
+        footer {
+    background-color: #062e08;  /* Fondo oscuro elegante */
+    color: #fff;  /* Texto blanco para contraste */
+    text-align: center;
+    padding: 15px;
+    font-size: 14px;
+}
+
+footer a {
+    color: #ffffff;  /* Color llamativo para los enlaces */
+    text-decoration: none;
+    font-weight: bold;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+.menu-toggle {
+    display: none;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .nav-container {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 90px;
+        left: 0;
+        width: 100%;
+        background-color: #ffffff;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        padding: 10px 0;
+    }
+
+    .nav-container.active {
+        display: flex; 
+    }
+
+    nav a {
+        display: block;
+        padding: 10px;
+        font-size: 18px;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+}
+
+@media (max-width: 600px) {
+    .services-grid {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .service-card {
+        width: 90%; /* Para que todas tengan el mismo ancho */
+        max-width: 350px;
+        height: 400px; /* Altura fija para que sean iguales */
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        text-align: center;
+    }
+
+    .service-card img {
+        height: 150px; /* Tamaño uniforme para las imágenes */
+        object-fit: cover;
+    }
+
+    .service-card h3 {
+        font-size: 18px;
+        margin: 10px 0;
+    }
+
+    .service-card p {
+        flex-grow: 1; /* Hace que la descripción se ajuste sin cambiar la altura */
+        font-size: 14px;
+        padding: 0 10px;
+    }
+
+    .button-container {
+        width: 100%;
+    }
+
+    .service-card button {
+        width: 100%;
+        padding: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .services-grid {
+        grid-template-columns: 1fr; 
+    }
+}
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="logo-container">
+            <a href="index.html">
+                <img src="IMG/img-Logos/Logo cabeza nuevo horizonte.png" alt="Logo de Nuevo Horizonte">
+            </a>
+            <a href="index.html">
+                <img src="IMG/img-Logos/Logo letras nuevo horizonte.png" alt="Letras del segundo logo" class="second-logo">
+            </a>
+        </div>
+
+        <div class="menu-toggle">
+            <i class="fa-solid fa-bars"></i>
+        </div>
+        <nav class="nav-container">
+            <a href="Nosotros.html"><i class="fa-solid fa-heart"></i> Nosotros</a>
+            <a href="javascript:void(0);" onclick="redirectToWhatsAppContact()"><i class="fa-solid fa-envelope"></i> Contacto</a>
+        </nav>
+    </header>
+
+    <div class="services-container">
+        <div class="title-container">
+            <h1>Descubre los servicios que tenemos para ti</h1>
+        </div>
+        <div class="services-grid" id="services-grid"></div>
+    </div>
+
+    <footer>
+        <footer>
+            <p>&copy; 2025 Nuevo Horizonte S.R.L. Todos los derechos reservados.</p>
+            <p>Contacto: 
+                <a href="tel:+51905448644">+51 905 448 644</a> / 
+                <a href="tel:+51952077901">+51 952 077 901</a> / 
+                <a href="tel:+51983406127">+51 983 406 127</a>
+            </p>
+        </footer>
+    </footer>
+
+    <script>
+        const services = [
+            {
+                image: "IMG/Img-Index/Magia del rebote.jpg",
+                title: "Magia del Rebote",
+                description: "Alquiler de juegos inflables para fiestas infantiles",
+                link: "Magia del rebote/Magia-del-rebote-Inicio.html"
+            },
+            {
+                image: "IMG/Img-Index/Recreo campestre.jpg",
+                title: "Recreo Campestre",
+                description: "Alquiler de espacio para eventos",
+                link: "Recreo campestre/RecreoCampestre-Inicio.html"
+            },
+            {
+                image: "IMG/Img-Index/Bungalow.jpg",
+                title: "Bungalow Tomayquichua",
+                description: "Alquiler de bungalows en la región de Tomayquichua",
+                link: "BungalowTomayquichua/BungalowTomayquichua-Incio.html"
+            },
+            {
+                image: "IMG/Img-Index/CARRITOS SNACKS JJR.png",
+                title: "Carritos Snack",
+                description: "Alquiler de una gran variedad de carritos de dulces para tus fiestas",
+                link: "Carritos Snack/Carritos Snack-Inicio.html"
+            },
+            {
+                image: "IMG/img-Reflectores-Solares/Foto 1.jpg",
+                title: "Reflectores solares",
+                description: "Venta de Reflectores Solares",
+                link: "Reflectores/Refectores-Solares.html"
+            },
+            {
+                image: "IMG/img-Reflectores-Electrico/Foto 2.jpg",
+                title: "Reflectores electricos",
+                description: "Venta de Reflectores Eléctricos",
+                link: "Reflectores/Reflectores-Electrico.html"
+            },
+            {
+                image: "IMG/Img-Index/Grass sintetico.jpg",
+                title: "Grass Sintético",
+                description: "Venta de grass sintético",
+                link: "Grass sintetivo/Grass sintetico.html"
+            },
+            {
+                image: "IMG/Img-Index/Lentes de natación.jpg",
+                title: "Lentes de Natación",
+                description: "Venta de lentes de natación para niños",
+                link: "Lentes de natación/Lentes de natación-Inicio.html"
+            },
+            {
+                image: "IMG/Img-Index/Academia Sport Victoria.jpg",
+                title: "Academia Sport Victoria",
+                description: "Academia deportiva",
+                link: "AcademiaSportVictoria/Academia-Inicio.html"
+            },
+            {
+                image: "IMG/Img-Index/Polideportivo-Huaral.jpeg",
+                title: "Polideportivo",
+                description: "Alquiler de polideportivo de Huaral",
+                link: "Polideportivo-Huaral/Polideportivo-Inicio.html"
+            },
+            {
+                image: "IMG/img-Cancha-Sintetica/Foto 4.jpg",
+                title: "Alquiler de cancha sintética",
+                description: "Alquiler de cancha sintética Los pinos/Brisas",
+                link: "Cancha sintética/Cancha Sintética-Inicio.html"
+            }
+            
+        ];
+        const servicesGrid = document.getElementById("services-grid");
+        services.forEach(service => {
+            const card = document.createElement("div");
+            card.classList.add("service-card");
+            card.innerHTML = `
+                <img src="${service.image}" alt="${service.title}">
+                <h3>${service.title}</h3>
+                <p>${service.description}</p>
+                <div class="button-container">
+                    <button onclick="window.location.href='${service.link}'">Ver más</button>
+                </div>
+            `;
+            servicesGrid.appendChild(card);
+        });
+
+    const whatsappNumbers = ["https://wa.link/mbszop", "https://wa.link/totgg1", "https://wa.link/3i6ua5"];
+    function getNextIndex() {
+        let currentIndex = localStorage.getItem("whatsappIndex") || 0;
+        currentIndex = (parseInt(currentIndex) + 1) % whatsappNumbers.length;
+        localStorage.setItem("whatsappIndex", currentIndex);
+        return currentIndex;
+    }
+    function redirectToWhatsApp() {
+        const index = getNextIndex();
+        window.open(whatsappNumbers[index], "_blank");
+    }
+
+    document.addEventListener("DOMContentLoaded", function() {
+    const menuToggle = document.querySelector(".menu-toggle");
+    const navContainer = document.querySelector(".nav-container");
+
+    menuToggle.addEventListener("click", function() {
+        navContainer.classList.toggle("active");
+    });
+});
+
+document.addEventListener("DOMContentLoaded", function() {
+    const whatsappIcon = document.querySelector(".whatsapp-floating");
+    const footer = document.querySelector("footer");
+
+    function adjustWhatsAppPosition() {
+        const footerRect = footer.getBoundingClientRect();
+        const viewportHeight = window.innerHeight;
+
+        if (footerRect.top <= viewportHeight) {
+            whatsappIcon.style.bottom = "80px"; 
+        } else {
+            whatsappIcon.style.bottom = "20px"; 
+        }
+    }
+
+    window.addEventListener("scroll", adjustWhatsAppPosition);
+});
+    
+document.addEventListener("DOMContentLoaded", function() {
+            document.querySelector(".menu-toggle").addEventListener("click", function() {
+                document.querySelector(".nav-container").classList.toggle("active");
+            });
+        });
+
+        function redirectToWhatsAppContact() {
+            const index = getNextIndex();
+            window.open(whatsappNumbers[index], "_blank");
+        }
+   
+    document.addEventListener("DOMContentLoaded", function() {
+        const menuToggle = document.querySelector(".menu-toggle");
+        const navContainer = document.querySelector(".nav-container");
+
+        if (menuToggle && navContainer) {
+            menuToggle.addEventListener("click", function() {
+                navContainer.classList.toggle("active");
+            });
+        }
+    });
+
+</script>
+<div class="whatsapp-floating">
+    <a href="javascript:void(0);" onclick="redirectToWhatsApp()">
+        <img src="IMG/img-Logos/Logo de Whatsapp.png" alt="WhatsApp" class="whatsapp-icon">
+    </a>
+</div>
+</body>
+</html>

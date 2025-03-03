@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo de Inflables</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #0056b3;
+            --bg-color: #f4f8fc;
+            --text-color: #333;
+            --card-bg-color: #ffffff;
+            --button-bg-color: #007bff;
+            --button-hover-bg: #0056b3;
+            --button-text-color: #ffffff;
+            --footer-bg-color: #333;
+            --footer-text-color: #fff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: #f4f8fc; /* Color de fondo */
+            color: #333;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: #ffffff;
+            padding: 15px 30px;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo-container {
+            flex : 1;
+            display: flex;
+            justify-content: center;
+        }
+
+        .logo-container img {
+            height: 200px;
+            transition: transform 0.3s ease;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            flex: 1;
+            justify-content: flex-end;
+        }
+
+        nav a {
+            color: #333;
+            font-weight: 500;
+            text-decoration: none;
+            transition: color 0.3s ease, background 0.3s ease;
+            padding: 10px 20px;
+            border-radius: 5px;
+        }
+
+        nav a[href*="Catalogo"] {
+            background-color: #6431cb;
+            color: white;
+            font-weight: bold;
+            border-radius: 8px;
+            padding: 12px 25px;
+            transition: background 0.3s ease, transform 0.2s ease;
+            margin-right: auto;
+        }
+
+        @media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 10px;
+    }
+
+    .logo-container img {
+        height: 60px;
+    }
+
+    nav {
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    nav a {
+        padding: 8px 15px;
+        font-size: 14px;
+    }
+}
+
+        .slider-container {
+    position: relative;
+    width: 100vw;
+    height: 80vh;
+    overflow: hidden;
+    border-radius: 15px; /* Bordes más redondeados */
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3); /* Sombra más pronunciada */
+}
+
+.slider-wrapper {
+    display: flex;
+    width: 300%;
+    height: 100%;
+    transition: transform 0.7s ease-in-out; /* Transición más fluida */
+}
+
+.slider-wrapper img {
+    width: 100vw;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 15px; 
+    box-shadow: 0px 8px 18px rgba(0, 0, 0, 0.3); 
+    transition: transform 0.5s ease-in-out; /* Efecto de zoom */
+}
+
+/* Efecto de zoom al pasar el mouse */
+.slider-wrapper img:hover {
+    transform: scale(1.05);
+}
+
+/* Texto superpuesto con más vida */
+.slider-text {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(84, 15, 124, 0.7); /* Fondo más vibrante */
+    color: white;
+    padding: 15px 30px;
+    border-radius: 15px;
+    font-size: 1.8rem;
+    font-weight: bold;
+    text-align: center;
+    opacity: 0;
+    animation: fadeIn 1.5s ease-in-out forwards, bounce 2s infinite;
+    text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
+}
+
+
+/* Animación de entrada */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateX(-50%) translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+    }
+}
+
+/* Efecto de rebote en el texto */
+@keyframes bounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(-10px); }
+}
+
+@media (max-width: 768px) {
+    .slider-container {
+        height: 50vh; /* Reducir altura en móviles */
+    }
+
+    .slider-text {
+        font-size: 1.2rem;
+        padding: 10px 20px;
+    }
+}
+
+.catalog-container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.catalog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 25px;
+}
+/* Estilos para el título del catálogo */
+.catalog-title {
+    text-align: center;
+    background: linear-gradient(135deg, #5c1d7e, #5c1d7e); /* Tonos rojos vibrantes */
+    color: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    margin-bottom: 20px;
+}
+
+.catalog-title h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.catalog-title p {
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+/* Estilos para la cuadrícula del catálogo */
+.catalog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Tarjeta */
+.product-card {
+    background-color: #f1e0f8; /* Rojo muy suave */
+    border: 2px solid #6b3977; /* Rojo más intenso */
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(211, 47, 47, 0.2);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Imagen */
+.product-card img {
+    width: 90%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-bottom: 15px;
+}
+
+/* Estilos del título */
+.product-card h3 {
+    font-size: 1.4rem;
+    color: #811cb7; /* Rojo oscuro */
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+}
+
+/* Descripción */
+.product-card p {
+    font-size: 1rem;
+    color: #000000; /* Rojo quemado */
+    margin-bottom: 15px;
+}
+
+/* Botón */
+.product-card button {
+    background: #812fd3; /* Rojo vibrante */
+    border: none;
+    color: white;
+    border-radius: 8px;
+    padding: 12px 24px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Efecto al pasar el mouse */
+.product-card button:hover {
+    background: #b71c1c;
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(183, 28, 28, 0.4);
+}
+
+.product-card button:hover::before {
+    left: 0;
+}
+
+.product-card button:hover {
+    color: white;
+}
+
+@media (max-width: 768px) {
+    .catalog-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .product-card img {
+        height: 150px;
+    }
+
+    .product-card h3 {
+        font-size: 1.2rem;
+    }
+
+    .product-card p {
+        font-size: 0.9rem;
+    }
+
+    .product-card button {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+}
+
+
+.logo-container img {
+    height: 80px;
+    transition: transform 0.3s ease;
+    animation: bounce 1s ease-in-out;
+}
+
+.logo-container img:hover {
+    transform: scale(1.1);
+}
+        /* Iconos de redes sociales */
+
+        .whatsapp-button, .facebook-button {
+    position: fixed;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    z-index: 1000;
+}
+
+.whatsapp-button {
+    bottom: 80px;
+}
+
+.facebook-button {
+    bottom: 20px;
+}
+
+.whatsapp-button:hover, .facebook-button:hover {
+    transform: scale(1.1);
+    opacity: 0.8;
+}
+
+@media (max-width: 768px) {
+    .whatsapp-button,
+    .facebook-button {
+        width: 40px;
+        height: 40px;
+    }
+
+    .whatsapp-button {
+        bottom: 15px;
+    }
+
+    .facebook-button {
+        bottom: 65px;
+    }
+}
+
+        body {
+    background-image: url('../IMG/img-Carritos JJR/Fondo-Pantalla-Dulces.JPG');
+    background-repeat: repeat; /* Hace que la imagen se repita en toda la pantalla */
+    background-size: auto; /* Usa el tamaño original de la imagen */
+    background-position: top left; /* Asegura que la imagen comience en la esquina superior izquierda */
+    background-size: 400px 400px; /* Ajusta el tamaño del patrón */
+}
+
+/* Estilos del botón hamburguesa */
+.hamburger-menu {
+    display: none;
+    font-size: 30px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--text-color);
+    position: absolute;
+    top: 15px;
+    left: 20px;
+    z-index: 1001;
+}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+    .hamburger-menu {
+        display: block;
+    }
+
+    /* Oculta los nav por defecto */
+    .menu {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background: var(--card-bg-color);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        border-radius: 10px;
+        padding: 15px;
+        text-align: center;
+        z-index: 1000;
+    }
+
+    .menu a {
+        display: block;
+        padding: 10px 0;
+        font-size: 18px;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .menu a:last-child {
+        border-bottom: none;
+    }
+
+    /* Activa el menú */
+    .menu.active {
+        display: flex;
+    }
+
+    /* Logo centrado */
+    .logo-container {
+        display: flex;
+        justify-content: center;
+        flex: 1;
+    }
+
+    /* Ajuste de botones flotantes */
+    .whatsapp-button {
+        bottom: 20px;
+    }
+    
+    .facebook-button {
+        bottom: 80px;
+    }
+}
+
+footer {
+    background-color: #383838;  /* Fondo oscuro elegante */
+    color: #fff;  /* Texto blanco para contraste */
+    text-align: center;
+    padding: 15px;
+    font-size: 14px;
+}
+
+footer a {
+    color: #ffffff;  /* Color llamativo para los enlaces */
+    text-decoration: none;
+    font-weight: bold;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+    </style>
+
+</head>
+<body>
+    
+    <header>
+        <!-- Botón del menú hamburguesa -->
+        <button class="hamburger-menu" onclick="toggleMenu()">☰</button>
+    
+        <nav class="menu">
+            <a href="../Carritos Snack/Carritos Snack(Catalogo).html">Galeria</a>
+        </nav>
+        
+        <div class="logo-container">
+            <img src="../IMG/img-Logos/Logo CarritosJJR.jpeg" alt="Logo de catalogosjrr">
+        </div>
+        
+        <nav class="menu">
+            <a href="#" onclick="redirectToWhatsApp()"><i class="fa-solid fa-envelope"></i> Contacto</a>
+            <a href="../nosotros.html"><i class="fa-solid fa-heart"></i> Nosotros</a>
+            <a href="../index.html"><i class="fa-solid fa-tools"></i> Otros servicios</a>
+        </nav>
+    
+        <!-- Botones flotantes -->
+        <a href="#" onclick="redirectToWhatsApp()">
+            <img src="../IMG/img-Logos/Logo de Whatsapp.png" alt="WhatsApp" class="whatsapp-button">
+        </a>
+    
+        <a href="https://www.facebook.com/profile.php?id=61554557900987" target="_blank">
+            <img src="../IMG/img-Logos/Logo de Facebook.svg" alt="Facebook" class="facebook-button">
+        </a>
+    </header>
+
+    <div class="slider-container">
+        <div class="slider-wrapper">
+            <img src="../IMG/img-Carritos JJR/Foto 8.jpg" alt="Imagen 1">
+            
+        </div>
+        <div class="slider-text">
+            CarritosJJR<br>
+            "Endulzamos tus momentos con el mejor sabor. ¡Snacks JJR, la alegría de cada celebración!" 🎉🍿
+        </div>
+    </div>
+    <div class="catalog-container">
+        <div class="catalog-title">
+            <h1>Catálogo de Snacks JJR</h1>
+            <p>Explora nuestra deliciosa selección de dulces y bocadillos perfectos para tus eventos. ¡Endulza cada momento con JJR!</p>            
+        </div>
+        <div class="catalog-grid">
+    <!-- Producto 1 -->
+<div class="product-card">
+    <img src="../IMG/img-Carritos JJR/Producto 1.png" alt="Producto 1">
+    <h3>Pop corn</h3>
+    <p>• 50 unidades: S/. 190</p>
+    <p>• 100 unidades: S/. 250</p>
+</div>
+<!-- Producto 2 -->
+<div class="product-card">
+    <img src="../IMG/img-Carritos JJR/Producto 2.png" alt="Producto 2">
+    <h3>Algodón dulce</h3>
+    <p>• 50 unidades: S/. 200</p>
+    <p>• 100 unidades: S/. 320</p>
+</div>
+<!-- Producto 3 -->
+<div class="product-card">
+    <img src="../IMG/img-Carritos JJR/Producto 3.png" alt="Producto 3">
+    <h3>Manzana acaramelada</h3>
+    <p>• 50 unidades: S/. 190</p>
+    <p>• 100 unidades: S/. 310</p>
+</div>
+<!-- Producto 4 -->
+<div class="product-card">
+    <img src="../IMG/img-Carritos JJR/Producto 4.png" alt="Producto 4">
+    <h3>Manzana achocolatada</h3>
+    <p>• 50 unidades: S/. 200</p>
+    <p>• 100 unidades: S/. 320</p>
+</div>
+<!-- Producto 5 -->
+<div class="product-card">
+    <img src="../IMG/img-Carritos JJR/Producto 5.png" alt="Producto 5">
+    <h3>Churros</h3>
+    <p>• 50 unidades: S/. 200</p>
+    <p>• 100 unidades: S/. 350</p>
+</div>
+<!-- Producto 6 -->
+<div class="product-card">
+    <img src="../IMG/img-Carritos JJR/Producto 6.png" alt="Producto 6">
+    <h3>Panchos</h3>
+    <p>• 50 unidades: S/. 190</p>
+    <p>• 100 unidades: S/. 270</p>
+</div>
+<!-- Producto 7 -->
+<div class="product-card">
+    <img src="../IMG/img-Carritos JJR/Producto 7.png" alt="Producto 7">
+    <h3>Pan con hot dog</h3>
+    <p>• 50 unidades: S/. 350</p>
+    <p>• 100 unidades: S/. 550</p>
+</div>
+<!-- Producto 8 -->
+<div class="product-card">
+    <img src="../IMG/img-Carritos JJR/Producto 8.png" alt="Producto 8">
+    <h3>Hamburguesa</h3>
+    <p>• 50 unidades: S/. 420</p>
+    <p>• 100 unidades: S/. 740</p>
+</div>
+<!-- Producto 9 -->
+<div class="product-card">
+    <img src="../IMG/img-Carritos JJR/Producto 9.png" alt="Producto 9">
+    <h3>Brochetas</h3>
+    <p>• 50 unidades: S/. 510</p>
+    <p>• 100 unidades: S/. 730</p>
+</div>
+<!-- Producto 10 -->
+<div class="product-card">
+    <img src="../IMG/img-Carritos JJR/Producto 10.png" alt="Producto 10">
+    <h3>Choripán</h3>
+    <p>• 50 unidades: S/. 380</p>
+    <p>• 100 unidades: S/. 740</p>
+</div>
+<!-- Producto 11 -->
+<div class="product-card">
+    <img src="../IMG/img-Carritos JJR/Producto 11.png" alt="Producto 11">
+    <h3>Mini salchipapa</h3>
+    <p>• 50 unidades: S/. 320</p>
+    <p>• 100 unidades: S/. 520</p>
+</div>
+<!-- Producto 12 -->
+<div class="product-card">
+    <img src="../IMG/img-Carritos JJR/Producto 12.png" alt="Producto 12">
+    <h3>Mini pan con hot dog</h3>
+    <p>• 50 unidades: S/. 290</p>
+    <p>• 100 unidades: S/. 420</p>
+</div>
+<!-- Producto 13 -->
+<div class="product-card">
+    <img src="../IMG/img-Carritos JJR/Producto 13.png" alt="Producto 13">
+    <h3>Mini burger</h3>
+    <p>• 50 unidades: S/. 380</p>
+    <p>• 100 unidades: S/. 500</p>
+</div>
+<!-- Producto 14 -->
+<div class="product-card">
+    <img src="../IMG/img-Carritos JJR/Producto 14.png" alt="Producto 14">
+    <h3>Mini choripán</h3>
+    <p>• 50 unidades: S/. 300</p>
+    <p>• 100 unidades: S/. 450</p>
+</div>
+<!-- Producto 15 -->
+<div class="product-card">
+    <img src="../IMG/img-Carritos JJR/Producto 15.png" alt="Producto 15">
+    <h3>Waffles</h3>
+    <p>• 50 unidades: S/. 380</p>
+    <p>• 100 unidades: S/. 570</p>
+</div>
+<!-- Producto 16 -->
+<div class="product-card">
+    <img src="../IMG/img-Carritos JJR/Producto 16.png" alt="Producto 16">
+    <h3>Donuts</h3>
+    <p>• 50 unidades: S/. 210</p>
+    <p>• 100 unidades: S/. 380</p>
+</div>
+<!-- Producto 17 -->
+<div class="product-card">
+    <img src="../IMG/img-Carritos JJR/Producto 17.JPG" alt="Producto 17">
+    <h3>Mazamorra morada</h3>
+    <p>• 50 unidades: S/. 250</p>
+    <p>• 100 unidades: S/. 410</p>
+</div>
+<!-- Producto 18 -->
+<div class="product-card">
+    <img src="../IMG/img-Carritos JJR/Producto 18.png" alt="Producto 18">
+    <h3>Arroz con leche</h3>
+    <p>• 50 unidades: S/. 320</p>
+    <p>• 100 unidades: S/. 450</p>
+</div>
+<!-- Producto 19 -->
+<div class="product-card">
+    <img src="../IMG/img-Carritos JJR/Producto 19.JPG" alt="Producto 19">
+    <h3>Combinado</h3>
+    <p>• 50 unidades: S/. 320</p>
+    <p>• 100 unidades: S/. 470</p>
+</div>
+<!-- Producto 20 -->
+<div class="product-card">
+    <img src="../IMG/img-Carritos JJR/Producto 20.png" alt="Producto 20">
+    <h3>Helado</h3>
+    <p>• 100 unidades: S/. 400</p>
+</div>
+<!-- Producto 21 -->
+<div class="product-card">
+    <img src="../IMG/img-Carritos JJR/Producto 21.png" alt="Producto 21">
+    <h3>Chicha morada</h3>
+    <p>• 50 unidades: S/. 220</p>
+    <p>• 100 unidades: S/. 350</p>
+</div>
+<!-- Producto 22 -->
+<div class="product-card">
+    <img src="../IMG/img-Carritos JJR/Producto 22.png" alt="Producto 22">
+    <h3>Inca Kola 300 ml</h3>
+    <p>• 50 unidades: S/. 180</p>
+    <p>• 100 unidades: S/. 290</p>
+</div>
+<!-- Producto 23 -->
+<div class="product-card">
+    <img src="../IMG/img-Carritos JJR/Producto 23.png" alt="Producto 23">
+    <h3>Coca cola 300 ml</h3>
+    <p>• 50 unidades: S/. 180</p>
+    <p>• 100 unidades: S/. 290</p>
+</div>
+<!-- Producto 24 -->
+<div class="product-card">
+    <img src="../IMG/img-Carritos JJR/Producto 24.png" alt="Producto 24">
+    <h3>Fanta 300 ml</h3>
+    <p>• 50 unidades: S/. 180</p>
+    <p>• 100 unidades: S/. 290</p>
+</div>
+<!-- Producto 25 -->
+<div class="product-card">
+    <img src="../IMG/img-Carritos JJR/Producto 25.png" alt="Producto 25">
+    <h3>Agua cielo Kids </h3>
+    <p>• 50 unidades: S/. 140</p>
+    <p>• 100 unidades: S/. 240</p>
+</div>
+
+        </div>
+    </div>
+    <script>
+
+    const whatsappNumbers = [
+        "https://wa.link/mbszop",
+        "https://wa.link/totgg1",
+        "https://wa.link/3i6ua5"
+    ];
+
+    function getNextIndex() {
+        let currentIndex = localStorage.getItem("whatsappIndex");
+        if (currentIndex === null) currentIndex = 0;
+        currentIndex = (parseInt(currentIndex) + 1) % whatsappNumbers.length;
+        localStorage.setItem("whatsappIndex", currentIndex);
+        return currentIndex;
+    }
+
+    function redirectToWhatsApp() {
+        const index = getNextIndex();
+        window.open(whatsappNumbers[index], "_blank");
+    }
+    document.addEventListener("DOMContentLoaded", function () {
+        const whatsappButton = document.querySelector(".whatsapp-button");
+        const facebookButton = document.querySelector(".facebook-button");
+        const footer = document.querySelector("footer");
+
+        function adjustButtonPosition() {
+            const footerRect = footer.getBoundingClientRect();
+            const buttonHeight = whatsappButton.offsetHeight;
+
+            if (footerRect.top < window.innerHeight - buttonHeight - 20) {
+                whatsappButton.style.bottom = (window.innerHeight - footerRect.top + 20) + "px";
+                facebookButton.style.bottom = (window.innerHeight - footerRect.top + 80) + "px";
+            } else {
+                whatsappButton.style.bottom = "80px";
+                facebookButton.style.bottom = "20px";
+            }
+        }
+
+        window.addEventListener("scroll", adjustButtonPosition);
+        adjustButtonPosition();
+    });
+
+    function toggleMenu() {
+        document.querySelectorAll(".menu").forEach(menu => {
+            menu.classList.toggle("active");
+        });
+    }
+
+    </script>
+     <footer>
+        <p>&copy; 2025 Nuevo Horizonte S.R.L. Todos los derechos reservados.</p>
+        <p>Contacto: 
+            <a href="tel:+51905448644">+51 905 448 644</a> / 
+            <a href="tel:+51952077901">+51 952 077 901</a> / 
+            <a href="tel:+51983406127">+51 983 406 127</a>
+        </p>
+    </footer>
+    </body>
+</html>

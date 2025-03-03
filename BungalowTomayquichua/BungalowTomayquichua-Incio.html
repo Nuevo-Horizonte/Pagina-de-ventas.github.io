@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <style>
+        /* Reset básico */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Estilos generales del header */
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 20px;
+    background-color: #ffffff;
+}
+
+/* Botón de menú hamburguesa */
+.menu-toggle {
+    display: none; /* Oculto en pantallas grandes */
+    font-size: 24px;
+    cursor: pointer;
+    color: #333;
+}
+
+/* Estilos del menú móvil */
+#mobile-menu {
+    display: flex;
+    justify-content: flex-end;
+}
+
+#mobile-menu ul {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+}
+
+#mobile-menu ul li a {
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    font-size: 16px;
+    transition: color 0.3s;
+}
+
+#mobile-menu ul li a:hover {
+    color: #ff6600;
+}
+
+/* ---- Estilos para móviles ---- */
+@media screen and (max-width: 768px) {
+    .menu-toggle {
+        display: block; /* Se muestra el botón hamburguesa */
+    }
+
+    #mobile-menu {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.9);
+    text-align: center;
+    padding: 20px 0;
+    z-index: 1000; /* Asegura que esté por encima de la imagen */
+}
+
+    #mobile-menu ul {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    #mobile-menu ul li {
+        padding: 10px 0;
+    }
+
+    #mobile-menu ul li a {
+        color: rgb(0, 0, 0);
+        font-size: 18px;
+    }
+
+    #mobile-menu.active {
+        display: flex; /* Se muestra cuando se activa con JS */
+    }
+}
+
+        /* Contenedor de los logos */
+/* Asegurar que el logo y menú no se sobrepongan */
+.logo {
+    flex: 1;
+    display: flex;
+    justify-content: flex-start;
+}
+
+/* Estilos para los logos */
+.logo img {
+    height: 100px;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between; /* Distribuye los elementos */
+    align-items: center;
+    width: 100%;
+    padding: 15px 20px;
+    position: relative;
+}
+
+/* Centrar el botón "Reservar ahora" */
+.header-center {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+/* Asegurar que el botón esté bien alineado */
+.reservar-btn {
+    background-color: #129409;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+
+        .reservar-btn:hover {
+            background-color: #e65c00;
+        }
+
+        @media (max-width: 768px) {
+    .header-center {
+        width: 100%;
+        justify-content: center; /* Asegura que el botón esté en el centro */
+    }
+}
+
+
+nav {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+}
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 15px;
+        }
+
+        nav ul li a {
+            color: rgb(0, 0, 0);
+            text-decoration: none;
+            font-size: 16px;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #ff6600;
+        }
+        nav ul li:last-child {
+    margin-right: 30px;
+    }
+
+.info-container {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    padding: 40px 20px;
+    max-width: 1200px;
+    margin: auto;
+    background: #f8f9fa;
+    border-radius: 10px;
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    padding: 25px;
+    background: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.info-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.info-image {
+    flex-shrink: 0;
+}
+
+.info-image img {
+    width: 100%;
+    max-width: 350px; /* Puedes ajustar este valor según lo que necesites */
+    height: 250px; /* Tamaño fijo para todas */
+    object-fit: cover; /* Evita que se deformen */
+    border-radius: 12px;
+}
+
+.info-text {
+    flex: 1;
+    font-size: 17px;
+    color: #444;
+    line-height: 1.8;
+}
+
+@media (max-width: 768px) {
+    .info-item {
+        flex-direction: column !important;
+        text-align: center !important;
+    }
+
+    .info-image {
+        order: -1 !important; /* Asegura que la imagen siempre vaya arriba */
+    }
+}
+        .map-container {
+    text-align: center;
+    padding: 40px 20px;
+    background-color: #f4f4f4;
+}
+
+.map-container h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.map-container p {
+    font-size: 18px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.map {
+    width: 80%;
+    max-width: 800px;
+    margin: auto;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+/* Sección de Reservas */
+.reservation-container {
+    text-align: center;
+    padding: 40px 20px;
+    background-color: #ffffff;
+}
+
+.reservation-container h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.reservation-container p {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 15px;
+}
+
+.reservation-form {
+    max-width: 400px;
+    margin: auto;
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.reservation-form form {
+    display: flex;
+    flex-direction: column;
+}
+
+.reservation-form label {
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.reservation-form input,
+.reservation-form textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ffffff;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.reservation-form textarea {
+    resize: none;
+    height: 80px;
+}
+
+.form-group {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.form-group input {
+    flex: 1;
+}
+
+.reservation-form button {
+    background-color: #28a745;
+    color: rgb(255, 255, 255);
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.reservation-form button:hover {
+    background-color: #218838;
+}
+
+.container {
+            background: #ffffff;
+            border: 1px solid #ffffff;
+            border-radius: 10px;
+            padding: 30px; /* Aumenta el espacio interno */
+            width: 450px; /* Aumenta el ancho */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            font-size: 22px; /* Aumenta el tamaño del título */
+            margin-bottom: 25px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px; /* Aumenta el espacio entre los elementos */
+        }
+
+        input[type="text"],
+        input[type="number"],
+        input[type="date"],
+        textarea {
+            width: 100%;
+            padding: 12px; /* Aumenta el tamaño del campo de entrada */
+            border: 1px solid #ffffff;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        textarea {
+            height: 100px; /* Aumenta el tamaño del área de texto */
+        }
+
+        button {
+            background-color: #28a745;
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+
+        small {
+            font-size: 14px;
+        }
+
+        html {
+    scroll-behavior: smooth;
+}
+    
+footer {
+    background-color: #383838;  /* Fondo oscuro elegante */
+    color: #fff;  /* Texto blanco para contraste */
+    text-align: center;
+    padding: 15px;
+    font-size: 14px;
+}
+
+footer a {
+    color: #ffffff;  /* Color llamativo para los enlaces */
+    text-decoration: none;
+    font-weight: bold;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+
+.slider-container {
+    position: relative;
+    width: 100vw;
+    height: 80vh;
+    overflow: hidden;
+    border-radius: 15px; /* Bordes más redondeados */
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3); /* Sombra más pronunciada */
+}
+
+.slider-wrapper {
+    display: flex;
+    width: 300%;
+    height: 100%;
+    transition: transform 0.7s ease-in-out; /* Transición más fluida */
+}
+
+.slider-wrapper img {
+    width: 100vw;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 15px; 
+    box-shadow: 0px 8px 18px rgba(0, 0, 0, 0.3); 
+    transition: transform 0.5s ease-in-out; /* Efecto de zoom */
+}
+
+/* Efecto de zoom al pasar el mouse */
+.slider-wrapper img:hover {
+    transform: scale(1.05);
+}
+
+/* Texto superpuesto con más vida */
+.slider-text {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.7); /* Fondo más vibrante */
+    color: white;
+    padding: 15px 30px;
+    border-radius: 15px;
+    font-size: 1.8rem;
+    font-weight: bold;
+    text-align: center;
+    opacity: 0;
+    animation: fadeIn 1.5s ease-in-out forwards, bounce 2s infinite;
+    text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
+}
+
+/* Animación de entrada */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateX(-50%) translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+    }
+}
+
+/* Efecto de rebote en el texto */
+@keyframes bounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(-10px); }
+}
+
+@media (max-width: 768px) {
+    .slider-container {
+        width: 90vw; /* Hace que el slider sea un poco más pequeño que la pantalla */
+        margin: 10px auto; /* Centra y agrega espacio */
+    }
+
+    .slider-text {
+        font-size: 1.2rem;
+        padding: 10px 20px;
+    }
+}
+/* Iconos de redes sociales */
+
+.whatsapp-button, .facebook-button {
+    position: fixed;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    z-index: 1000;
+}
+
+.whatsapp-button {
+    bottom: 80px;
+}
+
+.facebook-button {
+    bottom: 20px;
+}
+
+.whatsapp-button:hover, .facebook-button:hover {
+    transform: scale(1.1);
+    opacity: 0.8;
+}
+
+@media (max-width: 768px) {
+    .whatsapp-button,
+    .facebook-button {
+        width: 40px;
+        height: 40px;
+    }
+
+    .whatsapp-button {
+        bottom: 15px;
+    }
+
+    .facebook-button {
+        bottom: 65px;
+    }
+}
+
+/* Ajuste de botones flotantes */
+.whatsapp-button {
+        bottom: 20px;
+    }
+    
+    .facebook-button {
+        bottom: 80px;
+    }
+
+    </style>
+</head>
+    <body>
+        <header>
+            <div class="logo">
+                <img src="../IMG/img-Logos/Logo cabeza Bungalows.png" alt="Logo 1">
+                <img src="../IMG/img-Logos/Logos letras Bungalows.png" alt="Logo 2">
+            </div>
+
+        <div class="header-center">
+            <a href="#reserva">
+                <button class="reservar-btn" onclick="redirectToWhatsApp()">Reservar ahora</button>
+            </a>
+        </div>
+<!-- Menú Hamburguesa -->
+<div class="menu-toggle" onclick="toggleMenu()">
+    <i class="fa-solid fa-bars"></i>
+</div>
+
+<nav id="mobile-menu">
+    <ul>
+        <li><a href="../BungalowTomayquichua/BungalowTomayquichua-Galeria.html"><i class="fa-solid fa-images"></i> Galería</a></li>
+        <li><a href="#" onclick="redirectToWhatsApp()"><i class="fa-solid fa-envelope"></i> Contacto</a></li>
+        <li><a href="../index.html"><i class="fa-solid fa-tools"></i> Otros servicios</a></li>
+    </ul>
+</nav>
+        <!-- Botones flotantes -->
+        <a href="#" onclick="redirectToWhatsApp()">
+            <img src="../IMG/img-Logos/Logo de Whatsapp.png" alt="WhatsApp" class="whatsapp-button">
+        </a>
+    
+        <a href="https://www.facebook.com/profile.php?id=61554256382780" target="_blank">
+            <img src="../IMG/img-Logos/Logo de Facebook.svg" alt="Facebook" class="facebook-button">
+        </a>
+    </header>
+
+    <div class="slider-container">
+        <div class="slider-wrapper">
+            <img src="../IMG/img-BungalowTomayquichua/Foto 1.jpg" alt="Imagen 1">
+            
+        </div>
+        <div class="slider-text">
+            "Bungalows de Tomayquichua"<br>
+            Sumérgete en la armonía y el confort de nuestros Bungalows para crear momentos inolvidables
+        </div>
+    </div>
+    
+    <section class="info-container">
+        
+        <div class="info-item">
+            <div class="info-image">
+                <img src="../IMG/img-BungalowTomayquichua/Foto 24.jpg" alt="Bungalows">
+            </div>
+            <div class="info-text">
+                <p>Nuestros bungalows ofrecen un espacio acogedor y privado, ideal para aquellos que buscan una escapatoria tranquila. Cada unidad está completamente equipada, con un ambiente cálido y moderno que combina confort y estilo.</p>
+            </div>
+        </div>
+    
+        <div class="info-item reverse">
+            <div class="info-text">
+                <p>Disfruta de la frescura y el relax en nuestras dos piscinas, perfectas para refrescarte en cualquier momento del día. Ya sea que busques nadar o simplemente descansar al sol, nuestras piscinas ofrecen el espacio ideal para relajarte y disfrutar del ambiente tranquilo que te rodea.</p>
+            </div>
+            <div class="info-image">
+                <img src="../IMG/img-BungalowTomayquichua/Foto 28.jpg" alt="Piscina">
+            </div>
+        </div>
+    
+        <div class="info-item">
+            <div class="info-image">
+                <img src="../IMG/img-BungalowTomayquichua/Foto 3.jpg" alt="Cancha de voley">
+            </div>
+            <div class="info-text">
+                <p>Diviértete y mantén la energía con nuestra cancha de voleibol, perfecta para disfrutar de un buen juego entre amigos o familiares. Ubicada en un entorno natural, es el lugar ideal para activar tu cuerpo y disfrutar de momentos deportivos al aire libre.</p>
+            </div>
+        </div>
+    
+        <div class="info-item reverse">
+            <div class="info-text">
+                <p>Cada uno de nuestros bungalows están diseñados para brindarte comodidad y espacio. Con una cama matrimonial ideal para descansar plácidamente, y un camarote adicional perfecto para niños o amigos, ofrecemos una estancia cómoda para grupos pequeños o familias. Todo en un ambiente acogedor y moderno, donde cada detalle está pensado para tu confort.</p>
+            </div>  
+            <div class="info-image">
+                <img src="../IMG/img-BungalowTomayquichua/Foto 11.jpg" alt="Cuartos">
+            </div>    
+        </div>
+    
+        <div class="info-item">
+            <div class="info-image">
+                <img src="../IMG/img-BungalowTomayquichua/Foto 8.jpg" alt="Cocina">
+            </div>
+            <div class="info-text">
+                <p>Cada uno de nuestros bungalows cuentan con una amplia cocina completamente equipada, diseñada para ofrecerte todo el espacio y las comodidades que necesitas. Con electrodomésticos modernos, amplias superficies de trabajo y una zona de comedor, podrás preparar y disfrutar de tus comidas cómodamente durante toda tu estancia.</p>
+            </div>
+        </div>
+    
+        <div class="info-item reverse">
+            <div class="info-text">
+                <p>Disfruta de una experiencia única en nuestra área de parrillas, equipada para que puedas cocinar al aire libre y compartir momentos especiales con tus seres queridos. Con espacios amplios y cómodos, esta zona está diseñada para que prepares deliciosas parrilladas mientras disfrutas del ambiente natural que te rodea.</p>
+            </div>
+            <div class="info-image">
+                <img src="../IMG/img-BungalowTomayquichua/Foto 2.jpg" alt="Área de parrillas">
+            </div>
+        </div>
+    
+        <div class="info-item">
+            <div class="info-image">
+                <img src="../IMG/img-BungalowTomayquichua/Foto 12.jpg" alt="Cuatrimotos">
+            </div>
+            <div class="info-text">
+                <p>Vive la aventura al máximo con nuestras cuatrimotos, perfectas para explorar los paisajes naturales y recorrer senderos llenos de emoción. Con todo el equipamiento necesario para garantizar tu seguridad y diversión, nuestras cuatrimotos son ideales para quienes buscan una experiencia llena de adrenalina.</p>
+            </div>
+        </div>
+    
+        <div class="info-item reverse">
+            <div class="info-text">
+                <p>Disfruta de amplias áreas verdes donde la naturaleza se encuentra en su esplendor. Perfectas para paseos tranquilos, picnics o simplemente relajarte al aire libre, nuestras áreas verdes te brindan el espacio ideal para desconectar y disfrutar del entorno natural que nos rodea.</p>
+            </div>
+            <div class="info-image">
+                <img src="../IMG/img-BungalowTomayquichua/Foto 18.jpg" alt="Áreas verdes">
+            </div>
+        </div>
+    
+    </section>
+    
+
+        <section class="map-container">
+            <h2>Ubicación</h2>
+            <p>Encuéntranos en Tomayquichua y disfruta de una estadía inolvidable.</p>
+            <div class="map">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d4358.01279753396!2d-76.21724999999999!3d-10.070416699999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMTDCsDA0JzEzLjUiUyA3NsKwMTMnMDIuMSJX!5e1!3m2!1ses!2spe!4v1738861542681!5m2!1ses!2spe" 
+                    width="100%" 
+                    height="400" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+        </section>
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                document.querySelector(".reservar-btn").addEventListener("click", function (event) {
+                    event.preventDefault(); // Evita el comportamiento predeterminado del enlace
+                    document.querySelector("#reserva").scrollIntoView({ behavior: "smooth" });
+                });
+            });
+
+            // Rotación de enlaces de WhatsApp
+    const whatsappNumbers = [
+        "https://wa.link/mbszop",
+        "https://wa.link/totgg1",
+        "https://wa.link/3i6ua5"
+    ];
+
+    function getNextIndex() {
+        let currentIndex = localStorage.getItem("whatsappIndex");
+        if (currentIndex === null) currentIndex = 0;
+        currentIndex = (parseInt(currentIndex) + 1) % whatsappNumbers.length;
+        localStorage.setItem("whatsappIndex", currentIndex);
+        return currentIndex;
+    }
+
+    function redirectToWhatsApp() {
+        const index = getNextIndex();
+        window.open(whatsappNumbers[index], "_blank");
+    }
+
+    // Ajuste de botones flotantes
+    document.addEventListener("DOMContentLoaded", function () {
+        const whatsappButton = document.querySelector(".whatsapp-button");
+        const facebookButton = document.querySelector(".facebook-button");
+        const footer = document.querySelector("footer");
+
+        function adjustButtonPosition() {
+            const footerRect = footer.getBoundingClientRect();
+            const buttonHeight = whatsappButton.offsetHeight;
+
+            if (footerRect.top < window.innerHeight - buttonHeight - 20) {
+                whatsappButton.style.bottom = (window.innerHeight - footerRect.top + 20) + "px";
+                facebookButton.style.bottom = (window.innerHeight - footerRect.top + 80) + "px";
+            } else {
+                whatsappButton.style.bottom = "80px";
+                facebookButton.style.bottom = "20px";
+            }
+        }
+
+        window.addEventListener("scroll", adjustButtonPosition);
+        adjustButtonPosition();
+    });
+
+    function toggleMenu() {
+    const menu = document.getElementById("mobile-menu");
+    menu.classList.toggle("active");
+}
+
+        </script>
+    <footer>
+        <p>&copy; 2025 Nuevo Horizonte S.R.L. Todos los derechos reservados.</p>
+        <p>Contacto: 
+            <a href="tel:+51905448644">+51 905 448 644</a> / 
+            <a href="tel:+51952077901">+51 952 077 901</a> / 
+            <a href="tel:+51983406127">+51 983 406 127</a>
+        </p>
+    </footer>
+    </body>
+</html>

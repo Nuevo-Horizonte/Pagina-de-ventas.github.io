@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuevo Horizonte - Servicios</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+
+<style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f4f8fc;
+        }
+        
+        header {
+    background-color: #ffffff;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    height: 90px;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.logo-container img {
+    height: 80px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.logo-container:hover {
+    transform: scale(1.1) translateX(5px);
+}
+
+.logo-container img:hover {
+    animation: expand 0.6s ease-in-out;
+}
+
+.second-logo {
+    height: 100px; 
+}
+        
+.nav-container {
+    display: flex;
+    align-items: center;
+    gap: 20px; 
+}
+
+@media (max-width: 600px) {
+    .logo-container img {
+        height: 60px; 
+    }
+    .second-logo {
+        height: 80px;
+    }
+}
+
+
+nav {
+    display: flex;
+    align-items: center;
+    gap: 15px; 
+}
+
+nav a {
+            margin: 0 15px;
+            color: #333;
+            font-weight: 500;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        nav a:hover {
+            color: #1b5e20;
+        }
+
+        nav a i {
+    margin-right: 5px;
+}
+
+.whatsapp-container {
+    display: flex;
+    align-items: center;
+}
+
+.whatsapp-icon {
+    width: 60px; 
+    height: auto;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+.whatsapp-icon:hover {
+    transform: scale(1.2); 
+    opacity: 0.8;
+}
+
+.whatsapp-floating {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+    transition: bottom 0.3s ease-in-out;
+}
+
+@media (max-width: 600px) {
+    .whatsapp-floating {
+        bottom: 10px; 
+        right: 10px;
+    }
+    .whatsapp-icon {
+        width: 50px; 
+    }
+}
+
+footer {
+    background-color: #383838;  /* Fondo oscuro elegante */
+    color: #fff;  /* Texto blanco para contraste */
+    text-align: center;
+    padding: 15px;
+    font-size: 14px;
+}
+
+footer a {
+    color: #ffffff;  /* Color llamativo para los enlaces */
+    text-decoration: none;
+    font-weight: bold;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+    .hero {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+
+.hero img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.hero-text {
+    position: relative;
+    color: white;
+    text-align: left;
+    max-width: 50%;
+    padding: 2rem;
+    padding-left: 5%;
+    /* Fondo semi-transparente manteniendo la forma */
+    background: rgba(0, 0, 0, 0.7); /* Verde con 70% de opacidad */
+    clip-path: polygon(0 0, 80% 0, 100% 100%, 0% 100%);
+    
+    border-radius: 10px;
+    
+    
+}
+
+/* Estilos del texto */
+.hero-text h1 {
+    font-size: 4rem;
+    font-weight: bold;
+}
+
+.hero-text p {
+    font-size: 1.5rem;
+}
+
+
+.info-container {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    padding: 40px 20px;
+    max-width: 1200px;
+    margin: auto;
+    background: #f8f9fa;
+    border-radius: 10px;
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    padding: 25px;
+    background: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.info-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.info-image {
+    flex-shrink: 0;
+}
+
+.info-image img {
+    width: 100%;
+    max-width: 350px; /* Puedes ajustar este valor según lo que necesites */
+    height: 250px; /* Tamaño fijo para todas */
+    object-fit: cover; /* Evita que se deformen */
+    border-radius: 12px;
+}
+
+
+.info-text {
+    flex: 1;
+    font-size: 17px;
+    color: #444;
+    line-height: 1.8;
+}
+
+@media (max-width: 768px) {
+    .info-item {
+        flex-direction: column !important;
+        text-align: center !important;
+    }
+
+    .info-image {
+        order: -1 !important; /* Asegura que la imagen siempre vaya arriba */
+    }
+}
+</style>
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <a href="index.html"><img src="IMG/img-Logos/Logo cabeza nuevo horizonte.png" alt="Logo"></a>
+            <a href="index.html"><img src="IMG/img-Logos/Logo letras nuevo horizonte.png" alt="Letras"></a>
+        </div>
+        
+        <nav class="nav-container">
+            <a href="javascript:void(0);" onclick="redirectToWhatsAppContact()"><i class="fa-solid fa-envelope"></i> Contacto</a>
+            <a href="index.html"><i class="fa-solid fa-tools"></i> Otros servicios</a>
+        </nav>
+        
+    </header>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            document.querySelector(".menu-toggle").addEventListener("click", function() {
+                document.querySelector(".nav-container").classList.toggle("active");
+            });
+        });
+    </script>
+
+    <section class="info-container">
+
+        <div class="info-item">
+            <div class="info-image">
+                <img src="IMG/img-Nosotros/Quienes-somos.jpeg" alt="Quienes somos">
+            </div>
+            <div class="info-text">
+                <H2>¿QUIENES SOMOS?</H2>
+                <p> En Nuevo Horizonte, nos especializamos en ofrecer servicios que sean seguros y cómodos en el area de vivienda, eventos, entretenimiento y educación deportiva.
+
+                    Nos distinguimos por nuestro compromiso con la calidad, la transparencia y la satisfacción de nuestros clientes, asegurando experiencias inolvidables en cada uno de nuestros servicios.</p>
+            </div>
+        </div>
+
+        <div class="info-item reverse">
+            <div class="info-text">
+                <H2>MISION</H2>
+                <p>Somos una organización dedicada a crear espacios seguros y confortables para vivienda y negocios, realizando nuestras actividades enfocadas en la satisdaccion, superación de las expectativas de nuestros clientes.</p>                
+            </div>
+            <div class="info-image">
+                <img src="IMG/img-Nosotros/Mision.jpeg" alt="MISION">
+            </div>
+        </div>
+
+        <div class="info-item">
+            <div class="info-image">
+                <img src="IMG/img-Nosotros/Vision.jpeg" alt="VISION">
+            </div>
+            <div class="info-text">
+                <H2>VISION</H2>
+                <p>Ser reconocidos a nivel local como una empresa responsable y comprometida con bienestar de nuestros clientes, para lo cual prevemos implementar proyectos de recreacion, de comercio y colegios, dentro de los programas de vivienda con la finalidad de satisfacer sus necesidades y brincdarles la mayor comodidad posible.</p>
+            </div>
+        </div>
+
+        <div class="info-item reverse">
+            <div class="info-text">
+                <H2>Servicio al cliente</H2>
+                <p>El servicio es un valor personal que inculcamos a cada miembro de la familia Nuevo Horizonte, por lo que cada miembro realiza su trabajo con entusiasmo, esmero y empatia, con el único propósito de satisfacer las necesidades de neustros clientes.</p>
+            </div>  
+            <div class="info-image">
+                <img src="IMG/img-Nosotros/Servico al cliente.avif" alt="Servicio al cliente">
+            </div>    
+        </div>
+
+        <div class="info-item">
+            <div class="info-image">
+                <img src="IMG/img-Nosotros/Transparencia.avif" alt="Transparencia">
+            </div>
+            <div class="info-text">
+                <H2>Transparencia</H2>
+                <p>Nuestro deber principal es realizar nuestra actividades de manera honesta y transparente.</p>
+            </div>
+        </div>
+        <div class="info-item reverse">
+            <div class="info-text">
+                <H2>Responsabilidad</H2>
+                <p>Trabajamos enfocados a cumplir nuestras actividades de acuerdo al plazo estimado con la finalidad de brindar a nuestros clientes el mejor servicio.</p>
+            </div>
+            <div class="info-image">
+                <img src="IMG/img-Nosotros/Responsabilidad.avif" alt="Responsabilidad">
+            </div>
+        </div>
+    
+        <div class="info-item">
+            <div class="info-image">
+                <img src="IMG/img-Nosotros/Compromiso.avif" alt="Compromiso">
+            </div>
+            <div class="info-text">
+                <H2>Compromiso</H2>
+                <p>Desde el primer vínculo con nuestros clientes, nos comprometemos a trabajar juntos de manera íntegra e innovadora para superar sus expectativas</p>
+            </div>
+        </div>
+    </section>
+
+        <footer>
+            <p>&copy; 2025 Nuevo Horizonte S.R.L. Todos los derechos reservados.</p>
+            <p>Contacto: 
+                <a href="tel:+51905448644">+51 905 448 644</a> / 
+                <a href="tel:+51952077901">+51 952 077 901</a> / 
+                <a href="tel:+51983406127">+51 983 406 127</a>
+            </p>
+        </footer>
+
+    <script>
+ const whatsappNumbers = ["https://wa.link/mbszop", "https://wa.link/totgg1", "https://wa.link/3i6ua5"];
+    function getNextIndex() {
+        let currentIndex = localStorage.getItem("whatsappIndex") || 0;
+        currentIndex = (parseInt(currentIndex) + 1) % whatsappNumbers.length;
+        localStorage.setItem("whatsappIndex", currentIndex);
+        return currentIndex;
+    }
+    function redirectToWhatsApp() {
+        const index = getNextIndex();
+        window.open(whatsappNumbers[index], "_blank");
+    }
+    
+
+document.addEventListener("DOMContentLoaded", function() {
+    const whatsappIcon = document.querySelector(".whatsapp-floating");
+    const footer = document.querySelector("footer");
+
+    function adjustWhatsAppPosition() {
+        const footerRect = footer.getBoundingClientRect();
+        const viewportHeight = window.innerHeight;
+
+        if (footerRect.top <= viewportHeight) {
+            whatsappIcon.style.bottom = "80px"; 
+        } else {
+            whatsappIcon.style.bottom = "20px"; 
+        }
+    }
+
+    window.addEventListener("scroll", adjustWhatsAppPosition);
+});
+
+document.addEventListener("DOMContentLoaded", function() {
+            document.querySelector(".menu-toggle").addEventListener("click", function() {
+                document.querySelector(".nav-container").classList.toggle("active");
+            });
+        });
+
+        function redirectToWhatsAppContact() {
+            const index = getNextIndex();
+            window.open(whatsappNumbers[index], "_blank");
+        }
+
+        
+
+    </script>
+<div class="whatsapp-floating">
+    <a href="javascript:void(0);" onclick="redirectToWhatsApp()">
+        <img src="IMG/img-Logos/Logo de Whatsapp.png" alt="WhatsApp" class="whatsapp-icon">
+    </a>
+</div>
+</body>
+</html>

@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galería - Academia</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            color: #333;
+            background: #86e1e6;
+        }
+
+        header {
+            background: linear-gradient(45deg, #3e57e8, #3e57e8, #3e57e8);
+            color: #fff;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        nav {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+        }
+
+        .nav-links li {
+            margin-left: 1.5rem;
+        }
+
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #ffdd99;
+        }
+
+        .gallery-section {
+            text-align: center;
+            padding: 2rem;
+            background: #fff;
+            border-radius: 8px;
+            margin: 2rem auto;
+            max-width: 1200px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .gallery-section h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #270cb1;
+        }
+
+        .gallery {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .gallery img {
+            width: 250px;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 8px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .modal img {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 8px;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        footer {
+    background-color: #383838;  /* Fondo oscuro elegante */
+    color: #fff;  /* Texto blanco para contraste */
+    text-align: center;
+    padding: 15px;
+    font-size: 14px;
+}
+
+footer a {
+    color: #ffffff;  /* Color llamativo para los enlaces */
+    text-decoration: none;
+    font-weight: bold;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="../AcademiaSportVictoria/Academia-Inicio.html">Inicio</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="gallery-section">
+            <h2>Galería de Imágenes</h2>
+            <div class="gallery">
+                <img src="../IMG/img-Academia SportVictoria/Natación/Foto 1.jpg"   alt="Foto 1" onclick="openModal('img1')">
+                <img src="../IMG/img-Academia SportVictoria/Natación/Foto 2.jpg"   alt="Foto 2" onclick="openModal('img2')">
+                <img src="../IMG/img-Academia SportVictoria/Natación/Foto 3.jpg"   alt="Foto 3" onclick="openModal('img3')">
+                <img src="../IMG/img-Academia SportVictoria/Natación/Foto 4.jpg"   alt="Foto 4" onclick="openModal('img4')">
+                <img src="../IMG/img-Academia SportVictoria/Natación/Foto 5.jpg"   alt="Foto 5" onclick="openModal('img5')">
+                <img src="../IMG/img-Academia SportVictoria/Natación/Foto 6.jpg"   alt="Foto 6" onclick="openModal('img6')">
+                <img src="../IMG/img-Academia SportVictoria/Natación/Foto 7.jpg"   alt="Foto 7" onclick="openModal('img7')">
+                <img src="../IMG/img-Academia SportVictoria/Natación/Foto 8.jpg"   alt="Foto 8" onclick="openModal('img8')">
+                <img src="../IMG/img-Academia SportVictoria/Natación/Foto 9.jpeg"  alt="Foto 9" onclick="openModal('img9')">
+                <img src="../IMG/img-Academia SportVictoria/Natación/Foto 10.jpeg" alt="Foto 10" onclick="openModal('img10')">
+                <img src="../IMG/img-Academia SportVictoria/Natación/Foto 11.jpeg" alt="Foto 11" onclick="openModal('img11')">
+                <img src="../IMG/img-Academia SportVictoria/Natación/Foto 12.jpeg" alt="Foto 12" onclick="openModal('img12')">
+                <img src="../IMG/img-Academia SportVictoria/Natación/Foto 13.jpeg" alt="Foto 13" onclick="openModal('img13')">
+                <img src="../IMG/img-Academia SportVictoria/Natación/Foto 14.jpeg" alt="Foto 14" onclick="openModal('img14')">
+                <img src="../IMG/img-Academia SportVictoria/Natación/Foto 15.jpeg" alt="Foto 15" onclick="openModal('img15')">
+                <img src="../IMG/img-Academia SportVictoria/Natación/Foto 16.jpeg" alt="Foto 15" onclick="openModal('img16')">
+            </div>
+
+            <!-- Modales para imágenes -->
+            <div id="img1" class="modal" onclick="closeModal('img1')">
+                <img src="../IMG/img-Academia SportVictoria/Natación/Foto 1.jpg" alt="Foto 1">
+            </div>
+
+            <div id="img2" class="modal" onclick="closeModal('img2')">
+                <img src="../IMG/img-Academia SportVictoria/Natación/Foto 2.jpg" alt="Foto 2">
+            </div>
+
+            <div id="img3" class="modal" onclick="closeModal('img3')">
+                <img src="../IMG/img-Academia SportVictoria/Natación/Foto 3.jpg" alt="Foto 3">
+            </div>
+
+            <div id="img4" class="modal" onclick="closeModal('img4')">
+                <img src="../IMG/img-Academia SportVictoria/Natación/Foto 4.jpg" alt="Foto 4">
+            </div>
+
+            <div id="img5" class="modal" onclick="closeModal('img5')">
+                <img src="../IMG/img-Academia SportVictoria/Natación/Foto 5.jpg" alt="Foto 5">
+            </div>
+
+            <div id="img6" class="modal" onclick="closeModal('img6')">
+                <img src="../IMG/img-Academia SportVictoria/Natación/Foto 6.jpg" alt="Foto 6">
+            </div>
+
+            <div id="img7" class="modal" onclick="closeModal('img7')">
+                <img src="../IMG/img-Academia SportVictoria/Natación/Foto 7.jpg" alt="Foto 7">
+            </div>
+
+            <div id="img8" class="modal" onclick="closeModal('img8')">
+                <img src="../IMG/img-Academia SportVictoria/Natación/Foto 8.jpg" alt="Foto 8">
+            </div>
+
+            <div id="img9" class="modal" onclick="closeModal('img9')">
+                <img src="../IMG/img-Academia SportVictoria/Natación/Foto 9.jpeg" alt="Foto 9">
+            </div>
+
+            <div id="img10" class="modal" onclick="closeModal('img10')">
+                <img src="../IMG/img-Academia SportVictoria/Natación/Foto 10.jpeg" alt="Foto 10">
+            </div>
+            
+            <div id="img11" class="modal" onclick="closeModal('img11')">
+                <img src="../IMG/img-Academia SportVictoria/Natación/Foto 11.jpeg" alt="Foto 11">
+            </div>
+
+            <div id="img12" class="modal" onclick="closeModal('img12')">
+                <img src="../IMG/img-Academia SportVictoria/Natación/Foto 12.jpeg" alt="Foto 12">
+            </div>
+
+            <div id="img13" class="modal" onclick="closeModal('img13')">
+                <img src="../IMG/img-Academia SportVictoria/Natación/Foto 13.jpeg" alt="Foto 13">
+            </div>
+
+            <div id="img14" class="modal" onclick="closeModal('img14')">
+                <img src="../IMG/img-Academia SportVictoria/Natación/Foto 14.jpeg" alt="Foto 14">
+            </div>
+
+            <div id="img15" class="modal" onclick="closeModal('img15')">
+                <img src="../IMG/img-Academia SportVictoria/Natación/Foto 15.jpeg" alt="Foto 15">
+            </div>
+
+            <div id="img16" class="modal" onclick="closeModal('img16')">
+                <img src="../IMG/img-Academia SportVictoria/Natación/Foto 16.jpeg" alt="Foto 16">
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <p>&copy; 2025 Nuevo Horizonte S.R.L. Todos los derechos reservados.</p>
+        <p>Contacto: 
+            <a href="tel:+51905448644">+51 905 448 644</a> / 
+            <a href="tel:+51952077901">+51 952 077 901</a> / 
+            <a href="tel:+51983406127">+51 983 406 127</a>
+        </p>
+    </footer>
+    <script>
+        // Función para abrir el modal
+        function openModal(id) {
+            const modal = document.getElementById(id);
+            modal.classList.add('active');
+        }
+
+        // Función para cerrar el modal
+        function closeModal(id) {
+            const modal = document.getElementById(id);
+            modal.classList.remove('active');
+        }
+    </script>
+</body>
+</html>
