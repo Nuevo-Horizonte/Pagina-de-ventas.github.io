@@ -6,6 +6,8 @@
     <title>Nuevo Horizonte - Servicios</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <link rel="icon" type="image/x-icon" href="IMG/img-Logos/favicon.ico">
+
     
     <style>
         * {
@@ -74,7 +76,6 @@
     }
 }
 
-
 nav {
     display: flex;
     align-items: center;
@@ -106,7 +107,6 @@ nav a {
     }
 }
 
-
 .whatsapp-container {
     display: flex;
     align-items: center;
@@ -126,7 +126,7 @@ nav a {
 
 .whatsapp-floating {
     position: fixed;
-    bottom: 20px;
+    bottom: calc(20px + 2vh); 
     right: 20px;
     z-index: 1000;
     transition: bottom 0.3s ease-in-out;
@@ -141,7 +141,6 @@ nav a {
         width: 50px; 
     }
 }
-
 
         .services-container {
             padding: 80px 20px;
@@ -235,10 +234,10 @@ nav a {
         }
         
         footer {
-    background-color: #062e08;  /* Fondo oscuro elegante */
+    background-color: #103c13;  /* Fondo oscuro elegante */
     color: #fff;  /* Texto blanco para contraste */
     text-align: center;
-    padding: 15px;
+    padding: 5px 15px 15px 15px;
     font-size: 14px;
 }
 
@@ -354,7 +353,8 @@ footer a:hover {
         </div>
         <nav class="nav-container">
             <a href="Nosotros.html"><i class="fa-solid fa-heart"></i> Nosotros</a>
-            <a href="javascript:void(0);" onclick="redirectToWhatsAppContact()"><i class="fa-solid fa-envelope"></i> Contacto</a>
+            <a href="javascript:void(0);" onclick="redirectToWhatsApp()"><i class="fa-solid fa-envelope"></i> Contacto</a>
+
         </nav>
     </header>
 
@@ -500,28 +500,31 @@ document.addEventListener("DOMContentLoaded", function() {
     window.addEventListener("scroll", adjustWhatsAppPosition);
 });
     
-document.addEventListener("DOMContentLoaded", function() {
-            document.querySelector(".menu-toggle").addEventListener("click", function() {
-                document.querySelector(".nav-container").classList.toggle("active");
-            });
-        });
+document.addEventListener("DOMContentLoaded", function () {
+    const whatsappButton = document.querySelector(".whatsapp-floating");
+    const footer = document.querySelector("footer");
 
-        function redirectToWhatsAppContact() {
-            const index = getNextIndex();
-            window.open(whatsappNumbers[index], "_blank");
+    function adjustWhatsAppPosition() {
+        if (!whatsappButton || !footer) return; // Salir si no existen
+
+        const footerRect = footer.getBoundingClientRect();
+        const windowHeight = window.innerHeight;
+
+        if (footerRect.top < windowHeight) {
+            // Si el footer es visible, subir el botón para que no lo toque
+            let newBottom = windowHeight - footerRect.top + 20;
+            whatsappButton.style.bottom = `${newBottom}px`;
+        } else {
+            // Si el footer NO es visible, mantener la posición original
+            whatsappButton.style.bottom = "50px";
         }
-   
-    document.addEventListener("DOMContentLoaded", function() {
-        const menuToggle = document.querySelector(".menu-toggle");
-        const navContainer = document.querySelector(".nav-container");
+    }
 
-        if (menuToggle && navContainer) {
-            menuToggle.addEventListener("click", function() {
-                navContainer.classList.toggle("active");
-            });
-        }
-    });
-
+    // Ejecutar en carga, scroll y resize
+    adjustWhatsAppPosition();
+    window.addEventListener("scroll", adjustWhatsAppPosition);
+    window.addEventListener("resize", adjustWhatsAppPosition);
+});
 </script>
 <div class="whatsapp-floating">
     <a href="javascript:void(0);" onclick="redirectToWhatsApp()">
