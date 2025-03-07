@@ -6,6 +6,7 @@
     <title>Nuevo Horizonte - Servicios</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <link rel="icon" type="image/x-icon" href="IMG/img-Logos/favicon.ico">
 
 <style>
         * {
@@ -116,21 +117,28 @@ nav a {
 
 .whatsapp-floating {
     position: fixed;
-    bottom: 20px;
     right: 20px;
+    bottom: 50px; /* Valor inicial para escritorio */
     z-index: 1000;
     transition: bottom 0.3s ease-in-out;
 }
 
 @media (max-width: 600px) {
+    @media (max-width: 600px) {
     .whatsapp-floating {
-        bottom: 10px; 
+        position: fixed;
         right: 10px;
+        bottom: 30px; /* Ajustado para móviles */
+        z-index: 1000;
+        transition: bottom 0.3s ease-in-out;
     }
+}
+
+    /* Tamaño del icono */
     .whatsapp-icon {
         width: 50px; 
     }
-}
+}   
 
 footer {
     background-color: #383838;  /* Fondo oscuro elegante */
@@ -195,7 +203,6 @@ footer a:hover {
     font-size: 1.5rem;
 }
 
-
 .info-container {
     display: flex;
     flex-direction: column;
@@ -235,7 +242,6 @@ footer a:hover {
     border-radius: 12px;
 }
 
-
 .info-text {
     flex: 1;
     font-size: 17px;
@@ -253,6 +259,7 @@ footer a:hover {
         order: -1 !important; /* Asegura que la imagen siempre vaya arriba */
     }
 }
+
 </style>
 </head>
 <body>
@@ -372,25 +379,6 @@ footer a:hover {
         window.open(whatsappNumbers[index], "_blank");
     }
     
-
-document.addEventListener("DOMContentLoaded", function() {
-    const whatsappIcon = document.querySelector(".whatsapp-floating");
-    const footer = document.querySelector("footer");
-
-    function adjustWhatsAppPosition() {
-        const footerRect = footer.getBoundingClientRect();
-        const viewportHeight = window.innerHeight;
-
-        if (footerRect.top <= viewportHeight) {
-            whatsappIcon.style.bottom = "80px"; 
-        } else {
-            whatsappIcon.style.bottom = "20px"; 
-        }
-    }
-
-    window.addEventListener("scroll", adjustWhatsAppPosition);
-});
-
 document.addEventListener("DOMContentLoaded", function() {
             document.querySelector(".menu-toggle").addEventListener("click", function() {
                 document.querySelector(".nav-container").classList.toggle("active");
@@ -402,7 +390,34 @@ document.addEventListener("DOMContentLoaded", function() {
             window.open(whatsappNumbers[index], "_blank");
         }
 
-        
+document.addEventListener("DOMContentLoaded", function () {
+    const whatsappButton = document.querySelector(".whatsapp-floating");
+    const footer = document.querySelector("footer");
+
+    function adjustWhatsAppPosition() {
+        if (!whatsappButton || !footer) return; // Salir si no existen
+
+        const footerRect = footer.getBoundingClientRect();
+        const windowHeight = window.innerHeight;
+
+        if (footerRect.top < windowHeight) {
+            // Si el footer es visible, subir el botón para que no lo toque
+            let newBottom = windowHeight - footerRect.top + 20;
+            whatsappButton.style.bottom = `${newBottom}px`;
+        } else {
+            // Si el footer NO es visible, mantener la posición original
+            whatsappButton.style.bottom = "50px";
+        }
+    }
+
+    // Ejecutar en carga, scroll y resize
+    adjustWhatsAppPosition();
+    window.addEventListener("scroll", adjustWhatsAppPosition);
+    window.addEventListener("resize", adjustWhatsAppPosition);
+});
+
+
+
 
     </script>
 <div class="whatsapp-floating">
