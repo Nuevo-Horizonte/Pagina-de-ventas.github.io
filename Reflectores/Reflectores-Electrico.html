@@ -3,8 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Importaciones Nuevo Horizonte</title>
+    <title>Reflectores-Electrico</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <link rel="icon" type="image/x-icon" href="../IMG/img-Logos/favicon.ico">
+    
     <style>
         * {
             font-family: 'Poppins', sans-serif;
@@ -68,6 +71,57 @@
         .menu-nav a:hover {
             color: #007BFF;
         }
+
+
+/* Contenedor de los logos dentro del menú */
+.logos {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+    position: relative;
+}
+
+/* Estilo base de los logos */
+.logos .logo {
+    height: 50px;
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Efecto de expansión en ambos logos cuando se pasa el mouse */
+.logos:hover .logo {
+    animation: expandWave 1s ease-in-out infinite alternate;
+}
+
+/* Segundo logo con leve retraso en la animación */
+.logos:hover .logo:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+/* Animación de expansión */
+@keyframes expandWave {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(1.2);
+    }
+}
+
+/* Ajuste adicional para una ligera expansión del contenedor */
+.logos:hover {
+    transform: scale(1.1);
+}
+
+/* Responsivo */
+@media (max-width: 600px) {
+    .logos .logo {
+        height: 40px;
+    }
+}
+
+
 
         /* CONTENIDO QUE TAPARÁ EL MENÚ */
         .contenido {
@@ -145,7 +199,7 @@
 /* Contenedor de imágenes */
 .carrusel-imagenes {
     display: flex;
-    transition: transform 0.5s ease-in-out; /* Movimiento más suave */
+    transition: transform 1.5s ease-in-out; /* Movimiento más suave */
 }
 
 /* Asegura que cada imagen ocupe el 100% del carrusel */
@@ -311,13 +365,17 @@ footer a:hover {
 
     <!-- SEGUNDO ENCABEZADO -->
     <div class="menu" id="menu">
-        <img src="../IMG/img-Logos/Log de Nuevo Horizonte.jpeg" alt="Logo de Importaciones Nuevo Horizonte">
+        <div class="logos">
+            <img src="../IMG/img-Logos/Logo cabeza nuevo horizonte.png" alt="Logo 1" class="logo">
+            <img src="../IMG/img-Logos/Logo letras nuevo horizonte.png" alt="Logo 2" class="logo">
+        </div>
         <nav class="menu-nav">
             <a href="javascript:void(0);" onclick="redirectToWhatsAppContact()"><i class="fa-solid fa-envelope"></i> Contacto</a>
             <a href="../Nosotros.html">Nosotros</a>
             <a href="../index.html">Otros Servicios</a>
         </nav>
     </div>
+     
 
     <!-- CONTENIDO QUE TAPARÁ SOLO EL MENÚ -->
     <div class="contenido" id="contenido">
