@@ -1,10 +1,12 @@
-<!DOCTYPE html>
+<D!OCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Galería - Academia</title>
+    <title>BungalowTomayquichua-Galeria</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <link rel="icon" type="image/x-icon" href="../IMG/img-Logos/favicon_bungalows.ico">
     <style>
         * {
             margin: 0;
@@ -16,17 +18,9 @@
         body {
             line-height: 1.6;
             color: #333;
-            background: #7ee593;
+            background: #ffffff;
         }
 
-        header {
-            background: linear-gradient(45deg, #0a591a, #0a591a,#0a591a);
-            color: #1c7830;
-            padding: 1rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
         nav {
             display: flex;
             align-items: center;
@@ -55,7 +49,7 @@
         .gallery-section {
             text-align: center;
             padding: 2rem;
-            background: #fff;
+            background: #ffffff;
             border-radius: 8px;
             margin: 2rem auto;
             max-width: 1200px;
@@ -65,7 +59,7 @@
         .gallery-section h2 {
             font-size: 2rem;
             margin-bottom: 1rem;
-            color: #550e0e;
+            color: #000000;
         }
 
         .gallery {
@@ -112,8 +106,26 @@
             display: flex;
         }
 
+        html, body {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1; /* Hace que el contenido principal ocupe el espacio disponible */
+}
+
+html, body {
+    height: 100%; /* Asegura que la página ocupe toda la altura */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}
+
         footer {
-    background-color: #383838;  /* Fondo oscuro elegante */
+    background-color: #ffffff;  /* Fondo oscuro elegante */
     color: #fff;  /* Texto blanco para contraste */
     text-align: center;
     padding: 15px;
@@ -130,89 +142,77 @@ footer a:hover {
     text-decoration: underline;
 }
 
+.pagination {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.pagination button {
+    background: #ffffff;
+    color: rgb(0, 0, 0);
+    border: none;
+    padding: 10px 15px;
+    margin: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+.pagination button:hover {
+    background: #000000;
+    color: #ffffff;
+}
+
+.pagination .active {
+    background: #000000;
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+}
+
+ /*Botom de atras */
+
+.back-button {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background: #ffffff;
+    color: #000;
+    padding: 8px 15px;
+    border-radius: 5px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: background 0.3s ease;
+}
+
+.back-button:hover {
+    background: #ffffff;
+}
+
+@media (max-width: 768px) { 
+    .back-button {
+        display: none;
+    }
+}
     </style>
 </head>
 <body>
     <header>
         <nav>
-            <ul class="nav-links">
-                <li><a href="../Cancha sintética/Cancha Sintética-Inicio.html">Inicio</a></li>
-            </ul>
+            <a href="../BungalowTomayquichua/BungalowTomayquichua-Incio.html" class="back-button">
+                &#8592; Atrás
+            </a>
         </nav>
     </header>
     <main>
         <section class="gallery-section">
             <h2>Galería de Imágenes</h2>
             <div class="gallery">
-                <img src="../IMG/img-Cancha-Sintetica/Foto 1.jpg" alt="Foto 1" onclick="openModal('img1')">
-                <img src="../IMG/img-Cancha-Sintetica/Foto 2.jpg" alt="Foto 2" onclick="openModal('img2')">
-                <img src="../IMG/img-Cancha-Sintetica/Foto 3.jpg" alt="Foto 3" onclick="openModal('img3')">
-                <img src="../IMG/img-Cancha-Sintetica/Foto 4.jpg" alt="Foto 4" onclick="openModal('img4')">
-                <img src="../IMG/img-Cancha-Sintetica/Foto 5.jpg" alt="Foto 5" onclick="openModal('img5')">
-                <img src="../IMG/img-Cancha-Sintetica/Foto 6.jpg" alt="Foto 6" onclick="openModal('img6')">
-                <img src="../IMG/img-Cancha-Sintetica/Foto 7.jpg" alt="Foto 7" onclick="openModal('img7')">
-                <img src="../IMG/img-Cancha-Sintetica/Foto 8.jpg" alt="Foto 8" onclick="openModal('img8')">
-                <img src="../IMG/img-Cancha-Sintetica/Foto 9.jpg" alt="Foto 9" onclick="openModal('img9')">
-                <img src="../IMG/img-Cancha-Sintetica/Foto 10.jpg" alt="Foto 10" onclick="openModal('img10')">
-                <img src="../IMG/img-Cancha-Sintetica/Foto 11.jpg" alt="Foto 11" onclick="openModal('img11')">
-                <img src="../IMG/img-Cancha-Sintetica/Foto 12.jpg" alt="Foto 12" onclick="openModal('img12')">
-                <img src="../IMG/img-Cancha-Sintetica/Foto 13.jpg" alt="Foto 13" onclick="openModal('img13')">
-            </div>
-
-            <div id="img1" class="modal" onclick="closeModal('img1')">
-                <img src="../IMG/img-Cancha-Sintetica/Foto 1.jpg" alt="Foto 1">
-            </div>
-
-            <div id="img2" class="modal" onclick="closeModal('img2')">
-                <img src="../IMG/img-Cancha-Sintetica/Foto 2.jpg" alt="Foto 2">
-            </div>
-
-            <div id="img3" class="modal" onclick="closeModal('img3')">
-                <img src="../IMG/img-Cancha-Sintetica/Foto 3.jpg" alt="Foto 3">
-            </div>
-
-            <div id="img4" class="modal" onclick="closeModal('img4')">
-                <img src="../IMG/img-Cancha-Sintetica/Foto 4.jpg" alt="Foto 4">
-            </div>
-
-            <div id="img5" class="modal" onclick="closeModal('img5')">
-                <img src="../IMG/img-Cancha-Sintetica/Foto 5.jpg" alt="Foto 5">
-            </div>
-
-            <div id="img6" class="modal" onclick="closeModal('img6')">
-                <img src="../IMG/img-Cancha-Sintetica/Foto 6.jpg" alt="Foto 6">
-            </div>
-
-            <div id="img7" class="modal" onclick="closeModal('img7')">
-                <img src="../IMG/img-Cancha-Sintetica/Foto 7.jpg" alt="Foto 7">
-            </div>
-            
-            <div id="img8" class="modal" onclick="closeModal('img8')">
-                <img src="../IMG/img-Cancha-Sintetica/Foto 8.jpg" alt="Foto 8">
-            </div>
-            
-            <div id="img9" class="modal" onclick="closeModal('img9')">
-                <img src="../IMG/img-Cancha-Sintetica/Foto 9.jpg" alt="Foto 9">
-            </div>
-
-            <div id="img10" class="modal" onclick="closeModal('img10')">
-                <img src="../IMG/img-Cancha-Sintetica/Foto 10.jpg" alt="Foto 10">
-            </div>
-
-            <div id="img11" class="modal" onclick="closeModal('img11')">
-                <img src="../IMG/img-Cancha-Sintetica/Foto 11.jpg" alt="Foto 11">
-            </div>
-
-            <div id="img12" class="modal" onclick="closeModal('img12')">
-                <img src="../IMG/img-Cancha-Sintetica/Foto 12.jpg" alt="Foto 12">
-            </div>
-
-            <div id="img13" class="modal" onclick="closeModal('img13')">
-                <img src="../IMG/img-Cancha-Sintetica/Foto 13.jpg" alt="Foto 13">
-            </div>
-
         </section>
     </main>
+
+    <div id="pagination" class="pagination"></div>
+    
+    
     <footer>
         <p>&copy; 2025 Nuevo Horizonte S.R.L. Todos los derechos reservados.</p>
         <p>Contacto: 
@@ -222,6 +222,81 @@ footer a:hover {
         </p>
     </footer>
     <script>
+        document.addEventListener("DOMContentLoaded", function () {
+    const images = [
+                "../IMG/img-Cancha-Sintetica/Foto 1.jpg",
+                "../IMG/img-Cancha-Sintetica/Foto 2.jpg",
+                "../IMG/img-Cancha-Sintetica/Foto 3.jpg",
+                "../IMG/img-Cancha-Sintetica/Foto 4.jpg",
+                "../IMG/img-Cancha-Sintetica/Foto 5.jpg",
+                "../IMG/img-Cancha-Sintetica/Foto 6.jpg",
+                "../IMG/img-Cancha-Sintetica/Foto 7.jpg",
+                "../IMG/img-Cancha-Sintetica/Foto 8.jpg",
+                "../IMG/img-Cancha-Sintetica/Foto 9.jpg",
+                "../IMG/img-Cancha-Sintetica/Foto 10.jpg",
+                "../IMG/img-Cancha-Sintetica/Foto 11.jpg",
+                "../IMG/img-Cancha-Sintetica/Foto 12.jpg",
+            
+                ];
+
+    const galleryContainer = document.querySelector(".gallery");
+    const paginationContainer = document.getElementById("pagination");
+    const imagesPerPage =16;
+    let currentPage = 1;
+
+    function renderGallery(page) {
+        galleryContainer.innerHTML = ""; // Limpiar galería
+        const start = (page - 1) * imagesPerPage;
+        const end = start + imagesPerPage;
+        const imagesToShow = images.slice(start, end);
+
+        imagesToShow.forEach((src, index) => {
+            const imgElement = document.createElement("img");
+            imgElement.src = src;
+            imgElement.alt = `Foto ${start + index + 1}`;
+            imgElement.onclick = () => openModal(`modal${start + index + 1}`);
+            galleryContainer.appendChild(imgElement);
+
+            // Crear modales para cada imagen
+            const modal = document.createElement("div");
+            modal.className = "modal";
+            modal.id = `modal${start + index + 1}`;
+            modal.onclick = () => closeModal(modal.id);
+
+            const modalImg = document.createElement("img");
+            modalImg.src = src;
+            modalImg.alt = `Foto ${start + index + 1}`;
+            modal.appendChild(modalImg);
+            document.body.appendChild(modal);
+        });
+
+        renderPagination();
+    }
+
+    function renderPagination() {
+        paginationContainer.innerHTML = ""; // Limpiar botones de paginación
+        const totalPages = Math.ceil(images.length / imagesPerPage);
+
+        for (let i = 1; i <= totalPages; i++) {
+            const button = document.createElement("button");
+            button.innerText = i;
+            button.className = i === currentPage ? "active" : "";
+            button.onclick = () => {
+                currentPage = i;
+                renderGallery(currentPage);
+            };
+            paginationContainer.appendChild(button);
+        }
+    }
+
+    // Mostrar primera página al cargar
+    renderGallery(currentPage);
+});
+
+// Función para abrir modal
+function openModal(id) {
+    document.getElementById(id).classList.add("active");
+}
         // Función para abrir el modal
         function openModal(id) {
             const modal = document.getElementById(id);
