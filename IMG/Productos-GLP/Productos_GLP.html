@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productos GLP</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <link rel="icon" type="image/x-icon" href="../IMG/img-Logos/favicon.ico">
+    <style>
+        * {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* PRIMER ENCABEZADO */
+        .encabezado {
+            background-color: black;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            font-size: 16px;
+            font-weight: 500;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 5px;
+            cursor: pointer;
+            position: relative;
+            z-index: 2;
+        }
+
+        .flecha {
+            font-size: 16px;
+        }
+
+        /* SEGUNDO ENCABEZADO */
+        .menu {
+            background: white;
+            color: black;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            border-bottom: 2px solid #ddd;
+            position: relative;
+            z-index: 1;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .menu img {
+            height: 50px;
+        }
+
+        .menu-nav {
+            display: flex;
+            gap: 20px;
+        }
+
+        .menu-nav a {
+            text-decoration: none;
+            color: black;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .menu-nav a:hover {
+            color: #007BFF;
+        }
+
+        /* Contenedor de los logos dentro del menú */
+.logos {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+    position: relative;
+}
+
+/* Estilo base de los logos */
+.logos .logo {
+    height: 80px;
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Efecto de expansión en ambos logos cuando se pasa el mouse */
+.logos:hover .logo {
+    animation: expandWave 1s ease-in-out infinite alternate;
+}
+
+/* Segundo logo con leve retraso en la animación */
+.logos:hover .logo:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+/* Animación de expansión (solo crece) */
+@keyframes expandWave {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(1.2);
+    }
+}
+
+/* Aplica la animación solo una vez */
+.logos:hover .logo {
+    animation: expandWave 0.5s ease-in-out forwards;
+}
+
+
+/* Ajuste adicional para una ligera expansión del contenedor */
+.logos:hover {
+    transform: scale(1.1);
+}
+
+/* Responsivo */
+@media (max-width: 600px) {
+    .logos .logo {
+        height: 40px;
+    }
+}
+
+
+        /* CONTENIDO QUE TAPARÁ EL MENÚ */
+        .contenido {
+            display: none;
+            text-align: center;
+            padding: 20px;
+            background: #f4f4f4;
+            width: 100%;
+            position: absolute;
+            top: 62px; /* Justo debajo del primer encabezado */
+            left: 0;
+            height: auto;
+            z-index: 3;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .imagenes {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            padding: 10px;
+        }
+
+        .imagen-contenedor {
+            text-align: center;
+            width: 200px;
+        }
+
+        .imagen-contenedor img {
+            width: 200px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .descripcion {
+            font-size: 12px;
+            font-weight: 400;
+            margin-top: 5px;
+        }
+
+        .link {
+            display: block;
+            margin-top: 3px;
+            font-size: 10px;
+            color: #007BFF;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .link:hover {
+            text-decoration: underline;
+        }
+
+        .contenedor-producto {
+    display: flex;
+    max-width: 1200px;
+    margin: 20px auto;
+    gap: 100px; /* Aumenta el espacio entre el carrusel y la descripción */
+    align-items: center;
+    justify-content: flex-start;
+}
+
+
+/* Carrusel */
+.carrusel {
+    position: relative;
+    width: 100%;
+    max-width: 600px; /* Ajusta según el diseño */
+    overflow: hidden;
+    border-radius: 5px;
+}
+
+/* Contenedor de imágenes */
+.carrusel-imagenes {
+    display: flex;
+    transition: transform 0.5s ease-in-out; /* Movimiento más suave */
+}
+
+/* Asegura que cada imagen ocupe el 100% del carrusel */
+.carrusel-imagenes img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    flex-shrink: 0; /* Evita que se reduzcan */
+}
+
+
+/* Botones del carrusel */
+.carrusel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.prev {
+    left: 10px;
+}
+
+.next {
+    right: 10px;
+}
+
+.carrusel-btn:hover {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+
+.prev {
+    left: 10px;
+}
+
+.next {
+    right: 10px;
+}
+
+.carrusel-btn:hover {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.prev {
+    left: 10px;
+}
+
+.next {
+    right: 10px;
+}
+
+.carrusel-btn:hover {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+/* Información del producto */
+.info-producto {
+    width: 35%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 15px;
+}
+
+.titulo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.precio {
+    font-size: 20px;
+    color: #d32f2f;
+    font-weight: bold;
+}
+
+.descripcion {
+    font-size: 14px;
+    color: #555;
+}
+
+.caracteristicas {
+    font-size: 14px;
+    color: #333;
+}
+
+.boton-comprar {
+    background-color: #007BFF;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 5px;
+    display: inline-block;
+}
+
+.boton-comprar:hover {
+    background-color: #0056b3;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+    .contenedor-producto {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .carrusel {
+        width: 100%;
+    }
+
+    .info-producto {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+html, body {
+    height: 100%; /* Asegura que la página ocupe toda la altura */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+footer {
+    margin-top: auto; /* Empuja el footer hacia abajo */
+    background-color: #383838;
+    color: #fff;
+    text-align: center;
+    padding: 15px;
+    font-size: 14px;
+}
+
+footer a {
+    color: #ffffff;  /* Color llamativo para los enlaces */
+    text-decoration: none;
+    font-weight: bold;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+    </style>
+</head>
+<body>
+
+    <!-- PRIMER ENCABEZADO -->
+    <div class="encabezado" onclick="toggleContenido()">
+        Importaciones Nuevo Horizonte
+        <span class="flecha">▼</span>
+    </div>
+
+    <!-- SEGUNDO ENCABEZADO -->
+    <div class="menu" id="menu">
+        <div class="logos">
+            <img src="../IMG/img-Logos/Logo cabeza nuevo horizonte.png" alt="Logo 1" class="logo">
+            <img src="../IMG/img-Logos/Logo letras nuevo horizonte.png" alt="Logo 2" class="logo">
+        </div>
+        <nav class="menu-nav">
+            <a href="javascript:void(0);" onclick="redirectToWhatsAppContact()"><i class="fa-solid fa-envelope"></i> Contacto</a>
+            <li><a href="../index.html"><i class="fa-solid fa-tools"></i> Otros servicios</a></li>
+        </nav>
+    </div>
+    <!-- CONTENIDO QUE TAPARÁ SOLO EL MENÚ -->
+    <div class="contenido" id="contenido">
+        <div class="imagenes">
+            <div class="imagen-contenedor">
+                <img src="../IMG/Img-Index/Grass sintetico.jpg" alt="Grass sintético">
+                <p class="descripcion">Venta de Grass sintético</p>
+                <a href="../Grass sintetivo/Grass sintetico.html" class="link">Ver más</a>
+            </div>
+
+            <div class="imagen-contenedor">
+                <img src="../IMG/img-Reflectores-Electrico/Foto 1.jpg" alt="Reflectores solares y eléctricos">
+                <p class="descripcion">Venta de reflectores eléctricos</p>
+                <a href="../Reflectores/Reflectores-Electrico.html" class="link">Ver más</a>
+            </div>
+            
+            <div class="imagen-contenedor">
+                <img src="../IMG/img-Lentes-de-natación/Foto 1.jpg" alt="Grass sintético">
+                <p class="descripcion">Venta de lentes de natación</p>
+                <a href="../Lentes de natación/Lentes de natación-Inicio.html" class="link">Ver más</a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="contenedor-producto">
+        <!-- Sección de imágenes (Carrusel) -->
+    <!-- Sección de imágenes (Carrusel) -->
+<div class="carrusel">
+    <div class="carrusel-imagenes">
+        <img src="../IMG/img-Reflectores-Solares/Foto 1.jpg" alt="Producto 1">
+        <img src="../IMG/img-Reflectores-Solares/Foto 2.png" alt="Producto 2">
+        <img src="../IMG/img-Reflectores-Solares/Foto 3.jpg" alt="Producto 3">
+        <img src="../IMG/img-Reflectores-Solares/Foto 4.jpg" alt="Producto 4">
+        <img src="../IMG/img-Reflectores-Solares/Foto 5.jpg" alt="Producto 5">
+        <img src="../IMG/img-Reflectores-Solares/Foto 6.jpg" alt="Producto 6">
+        <img src="../IMG/img-Reflectores-Solares/Foto 7.jpg" alt="Producto 7">
+
+        
+    </div>
+    <button class="carrusel-btn prev" onclick="moverCarrusel(-1)">&#10094;</button>
+    <button class="carrusel-btn next" onclick="moverCarrusel(1)">&#10095;</button>
+</div> <!-- 🔥 AQUÍ SE CIERRA EL CARRUSEL CORRECTAMENTE -->
+
+<!-- Sección de descripción -->
+<div class="info-producto">
+    <h1 class="titulo">Reflector Solar</h1>
+    <p class="precio">S/ 520</p>
+    <p class="descripcion">Ilumina tus noches de manera eficiente y sostenible con este reflector solar. Perfecto para disfrutar de tus espacios al aire libre con una luz potente y confiable, sin preocuparte por el consumo de energía.</p>
+    <ul class="caracteristicas">
+        <li>Potencia: 600 w</li>
+        <li>Voltaje: 12V</li>
+        <li>Panel solar de silicio policristalino de 6V 40W</li>
+        <li>Tiempo de iluminación: 12-16 horas</li>
+        <li>Tamaño de la lámpara: 365*288*90mm</li>
+        <li>Tamaño del panel solar: 670*445*25mm</li>
+        <li>Temperatura de color: 6500k</li>
+        <li>Inducción de luz+sensor de movimiento+Control remoto inteligente</li>
+        <li>Mando a distancia + accesorios gratis</li>
+        <li>1500 lúmeness</li>
+    </ul>
+    <a href="javascript:void(0);" onclick="redirectToWhatsAppContact()" class="boton-comprar">Realiza tu pedido ahora</a>
+</div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Nuevo Horizonte S.R.L. Todos los derechos reservados.</p>
+        <p>Contacto: 
+            <a href="tel:+51905448644">+51 905 448 644</a> / 
+            <a href="tel:+51952077901">+51 952 077 901</a> / 
+            <a href="tel:+51983406127">+51 983 406 127</a>
+        </p>
+    </footer>
+
+    <script>
+        function toggleContenido() {
+            var contenido = document.getElementById("contenido");
+            var menu = document.getElementById("menu");
+
+            if (contenido.style.display === "block") {
+                contenido.style.display = "none";
+                menu.style.transform = "translateY(0)";
+            } else {
+                contenido.style.display = "block";
+                menu.style.transform = "translateY(100%)"; // Empuja el menú hacia abajo
+            }
+        }
+
+
+        let index = 0;
+function moverCarrusel(direccion) {
+    const carrusel = document.querySelector(".carrusel-imagenes");
+    const imagenes = document.querySelectorAll(".carrusel-imagenes img");
+    const total = imagenes.length;
+
+    // Asegurar que solo se mueva una imagen a la vez
+    index += direccion;
+
+    // Evitar que el índice se salga del rango
+    if (index < 0) {
+        index = total - 1;
+    } else if (index >= total) {
+        index = 0;
+    }
+
+    // Calcular la distancia a mover (100% del carrusel por imagen)
+    const desplazamiento = index * -100;
+    carrusel.style.transform = `translateX(${desplazamiento}%)`;
+}
+
+const whatsappNumbers = ["https://wa.link/mbszop", "https://wa.link/totgg1", "https://wa.link/3i6ua5"];
+        function getNextIndex() {
+            let currentIndex = localStorage.getItem("whatsappIndex") || 0;
+            currentIndex = (parseInt(currentIndex) + 1) % whatsappNumbers.length;
+            localStorage.setItem("whatsappIndex", currentIndex);
+            return currentIndex;
+        }
+        function redirectToWhatsAppContact() {
+            const index = getNextIndex();
+            window.open(whatsappNumbers[index], "_blank");
+        }
+    </script>
+</body>
+</html>
